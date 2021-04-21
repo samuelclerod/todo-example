@@ -12,8 +12,8 @@ const list = async (req, res) => {
 
 const add = async (req, res) => {
   try {
-    const { name, status } = req.body;
-    const task = new Task({ name, status });
+    const { title, isComplete } = req.body;
+    const task = new Task({ title, isComplete });
     await task.save();
     return res.status(201).send(task);
   } catch (error) {
@@ -37,10 +37,10 @@ const show = async (req, res) => {
 const update = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, status } = req.body;
+    const { title, isComplete } = req.body;
     const task = await Task.findByIdAndUpdate(
       id,
-      { name, status },
+      { title, isComplete },
       { new: true }
     );
     if (!task)

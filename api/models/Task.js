@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
-  name: {
+  title: {
     type: String,
     required: "Enter the name of the task"
   },
@@ -10,12 +10,9 @@ const TaskSchema = new Schema({
     type: Date,
     default: Date.now()
   },
-  status: {
-    type: [{
-      type: String,
-      enum: ['pending', 'ongoing', 'completed']
-    }],
-    default: ['pending'],
+  isComplete: {
+    type: Boolean,
+    default: false,
   }
 });
 
