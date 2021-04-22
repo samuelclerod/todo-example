@@ -2,17 +2,13 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-require('dotenv').config({
-  path: process.env.NODE_ENV === "dev" ? ".env.dev" : ".env"
-})
-
 const {
   port,
   host,
-  mongodb,
+  mongoUrl,
 } = require('./config/variables');
 
-mongoose.connect(process.env.MONGODB_URL, require('./config/mongoose'));
+mongoose.connect(mongoUrl, require('./config/mongoose'));
 
 app.use(express.json());
 
